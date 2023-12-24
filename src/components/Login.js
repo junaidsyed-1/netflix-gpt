@@ -2,13 +2,13 @@ import { useRef, useState } from "react";
 import { checkValidData } from "../utils/validate";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { LOGIN_BG_IMG } from "../utils/constant";
+import Header from "./Header";
 
 const Login = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const [isSignInForm, setisSignInForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
 
@@ -33,7 +33,6 @@ const Login = () => {
                     }).then(() => {
                         const { uid, email, displayName } = auth.currentUser;
                         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
-                        navigate("/browse");
                     }).catch((error) => {
                         console.log(error);
                     });
@@ -48,12 +47,10 @@ const Login = () => {
             signInWithEmailAndPassword(auth, email.current.value, password.current.value)
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    navigate("/browse")
                 })
                 .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    setErrorMessage(errorCode + "-" + errorMessage);
+                    const errorMessage = "Invalid Credentials";
+                    setErrorMessage(errorMessage);
                 });
         };
     };
@@ -64,14 +61,12 @@ const Login = () => {
 
     return (
         <div className="flex h-screen items-center justify-center">
-            <div className="bg-gradient-to-b from-black absolute w-full p-5 z-10 top-0">
-                <img
-                    className="w-56"
-                    src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" alt="Logo" />
+            <div>
+                <Header />
             </div>
             <div>
                 <img
-                    src="https://assets.nflxext.com/ffe/siteui/vlv3/ca6a7616-0acb-4bc5-be25-c4deef0419a7/c5af601a-6657-4531-8f82-22e629a3795e/IN-en-20231211-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+                    src={LOGIN_BG_IMG}
                     alt="bg-img" />
             </div>
             <form
