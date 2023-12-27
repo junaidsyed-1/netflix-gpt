@@ -5,11 +5,14 @@ import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { LOGO } from "../utils/constant";
+import { toggleGptSearch } from "../utils/gptSlice";
 
 const Header = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector(store => store.user)
+    const showGptSearch = useSelector(store => store.gpt.showGptSearch)
+
 
     const handleSignOut = () => {
         signOut(auth).then(() => { })
@@ -34,6 +37,11 @@ const Header = () => {
         return () => unsubscribe();
     }, []);
 
+    const handleToggleSearch = () => {
+        dispatch(toggleGptSearch())
+    };
+
+
     return (
         <div className="absolute flex bg-gradient-to-b from-black w-full z-10 justify-between items-center top-0">
             <div className="m-3">
@@ -41,9 +49,15 @@ const Header = () => {
                     className="w-36"
                     src={LOGO} alt="Logo" />
             </div>
-            {user && <div className="m-3">
-                <button onClick={handleSignOut} className="bg-red-600 text-white p-2 rounded-md text-sm">Sign Out</button>
-            </div>}
+            {
+                user &&
+                <>
+                    <div className="m-3">
+                        <button onClick={handleToggleSearch} className="bg-blue-600 text-white p-2 rounded-md text-md px-3 hover:bg-blue-500 ">{showGptSearch ? "Home" : "GPT Search"}</button>
+                        <button onClick={handleSignOut} className="bg-red-600 text-white p-2 rounded-md text-md px-3 hover:bg-red-500 mx-4">Sign Out</button>
+                    </div>
+                </>
+            }
         </div>
     )
 }
