@@ -1,6 +1,7 @@
 import { IMG_CDN_URL } from '../utils/constant'
 
 const MovieCard = ({ title, posterPath }) => {
+    if (!posterPath) return null;
     return (
 
         <img
