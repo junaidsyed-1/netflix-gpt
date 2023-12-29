@@ -1,11 +1,12 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { OPTIONS } from "../utils/constant";
 import { addMovieTrailer } from "../utils/moviesSlice";
 import { useEffect } from "react";
-import Shimmer from "../components/Shimmer";
 
 const useMovieTrailer = (movieId) => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const movieTrailer = useSelector(store => store.movie.movieTrailer)
+
 
     const getMovieTrailer = async () => {
         const URL = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`
@@ -17,7 +18,7 @@ const useMovieTrailer = (movieId) => {
     };
 
     useEffect(() => {
-        getMovieTrailer();
+        !movieTrailer && getMovieTrailer();
     }, []);
 };
 
