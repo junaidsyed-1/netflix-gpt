@@ -9,7 +9,6 @@ const usePopularTv = () => {
     const getPopularTv = async () => {
         const data = await fetch(POPULAR_TV, OPTIONS);
         const json = await data.json();
-        // console.log(json.results);
         dispatch(addPopularTv(json.results));
     };
 

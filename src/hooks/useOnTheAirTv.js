@@ -9,7 +9,6 @@ const useOnTheAirTv = () => {
     const getOnTheAirTv = async () => {
         const data = await fetch(ON_THE_AIR_TV, OPTIONS);
         const json = await data.json();
-        // console.log(json.results);
         dispatch(addOnTheAirTv(json.results));
     };
 

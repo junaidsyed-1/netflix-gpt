@@ -9,7 +9,6 @@ const useTopRatedTv = () => {
     const getTopRatedTv = async () => {
         const data = await fetch(TOP_RATED_TV, OPTIONS);
         const json = await data.json();
-        // console.log(json.results);
         dispatch(addTopRatedTv(json.results));
     };
 
