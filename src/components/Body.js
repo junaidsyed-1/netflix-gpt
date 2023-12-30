@@ -15,8 +15,6 @@ const Body = () => {
 
     ]);
 
-
-
     return (
         <div className="scrollbar-thin scrollbar-thunb-rose-500 scrollbar-track-slate-500">
             <RouterProvider router={appRouter} />
