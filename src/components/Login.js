@@ -64,14 +64,15 @@ const Login = () => {
             <div>
                 <Header />
             </div>
-            <div>
+            <div >
                 <img
+                    className="h-screen w-screen object-cover"
                     src={LOGIN_BG_IMG}
                     alt="bg-img" />
             </div>
             <form
                 onSubmit={(e) => { e.preventDefault() }}
-                className="p-16 w-3/12 bg-black absolute text-white opacity-95 rounded-md">
+                className="p-8 md:p-16 w-full md:w-3/12 bg-black absolute text-white opacity-95 rounded-md">
                 <h1 className="text-3xl font-bold mb-5 mt-2">{isSignInForm ? "Sign In" : "Sign Up"}</h1>
                 {!isSignInForm && <input ref={name} type="text" placeholder="Full Name" className="py-3 px-4 my-3 rounded-lg w-full bg-[#8c8c8c] text-white" />}
                 <input
