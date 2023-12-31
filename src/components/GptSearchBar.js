@@ -39,7 +39,7 @@ const GptSearchBar = () => {
         <>
             <div className="fixed -z-10 top-0"><img src={LOGIN_BG_IMG} alt="img" /></div>
 
-            <form onSubmit={(e) => e.preventDefault()} className="bg-black bg-opacity-80 lg:w-1/2 grid grid-flow-col grid-col-12 mx-auto mt-[20%] lg:mt-[7%] p-4 rounded-md">
+            <form onSubmit={(e) => e.preventDefault()} className="bg-black bg-opacity-80 lg:w-1/2 grid grid-flow-col grid-col-12 mx-auto mt-[40%] md:mt-[7%] p-4 rounded-md">
                 <input ref={gptSearchVal} type="text" placeholder={lang[langKey].gptPlaceHolder} className="col-span-10 p-4 rounded-md" />
                 <button onClick={handleGptSearch} className="bg-red-600 p-2 rounded-md mx-2 text-white hover:bg-red-500">{lang[langKey].search}</button>
             </form>

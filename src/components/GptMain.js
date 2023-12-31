@@ -10,4 +10,4 @@ const GptMain = () => {
     )
 };
 
-export default GptMain
+export default GptMain;

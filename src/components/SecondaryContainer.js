@@ -8,7 +8,7 @@ const SecondaryContainer = () => {
     const tvLists = useSelector(store => store.tv);
 
     return (
-        <div className="pl-20 bg-black ">
+        <div className="pl-20 bg-black mt-[59%] md:mt-0 sm:mt-[36%]">
             <div className="-mt-64 relative z-20 ">
                 <MoviesList title="Now Playing Movies" movies={movies.nowPlayingMovies} />
                 <TvLists title="Top Rated Tv Series" tvList={tvLists.topRatedTv} />
