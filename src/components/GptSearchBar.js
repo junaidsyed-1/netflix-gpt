@@ -37,7 +37,7 @@ const GptSearchBar = () => {
 
     return (
         <>
-            <div className="fixed -z-10 top-0"><img src={LOGIN_BG_IMG} alt="img" /></div>
+            <div className="fixed -z-10 top-0"><img className="h-screen w-screen object-cover " src={LOGIN_BG_IMG} alt="img" /></div>
 
             <form onSubmit={(e) => e.preventDefault()} className="bg-black bg-opacity-80 lg:w-1/2 grid grid-flow-col grid-col-12 mx-auto mt-[40%] md:mt-[7%] p-4 rounded-md">
                 <input ref={gptSearchVal} type="text" placeholder={lang[langKey].gptPlaceHolder} className="col-span-10 p-4 rounded-md" />
